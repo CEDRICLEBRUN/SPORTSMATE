@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My PWA</title>
+        {% load static %}
+        <link rel="manifest" href="{% static 'manifest.json' %}">
+        <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register("{% static 'service-worker.js' %}")
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successfull with scope: ', registration.scope);
+                    }, function(error) {
+                        console.log('ServiceWorker registartion failed: ', error);
+                    });
+            }
+        </script>
+    </head>
+    <body>
+        <div id="mySidenav" class="sidenav closebtn" onclick="closeNav()">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href=" {% url 'main' %}"><i class="fa-solid fa-house-chimney"></i> Accueil</a>
+            <a href=" {% url 'event_list' %}"><i class="fa-solid fa-calendar-day"></i> Rechercher</a>
+            <a href=" {% url 'create_event' %}"><i class="fa-regular fa-calendar-plus"></i> Ajouter</a>
+            <a href=" {% url 'my_events' %}"><i class="fa-regular fa-calendar-check"></i> Mes événements</a>
+            <a href=" {% url 'account' %}"><i class="fa-solid fa-gear"></i> Mon compte</a>
+            <a href=" {% url 'conversation_list' %}"><i class="fa-regular fa-message"></i> Messagerie</a>
+            {% if user.is_authenticated %}
+                <form id="logout-form" method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-main">Se déconnecter</button>
+                </form>
+            {% else %}
+                <p><a href="{% url 'login' %}" class="btn-main">Se connecter</a></p>
+                <p><a href="{% url 'signup' %}" class="btn-main">S'enregistrer</a></p>
+            {% endif %}
+        </div>
+        <span class="openbtn" onclick="openNav()">&#9776;</span>
+
+        {% block content %}
+        {% endblock %}
+
+        <script src="{% static 'scripts.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#id_date').datepicker({
+                    dateFormat: 'yy-mm-dd'
+                });
+            })
+        </script>
+    </body>
+</html>

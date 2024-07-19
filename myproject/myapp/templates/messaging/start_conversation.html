@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <h2>Nouvelle conversation</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label for="user_search" hidden></label>
+                <input type="text" id="user_search" onkeyup="filterUsers()" placeholder="Pseudo">
+            </div>
+            <div id="user-list">
+                {% for user in users %}
+                <div class="user-item" onclick="selectUser('{{ user.id }}', '{{ user.username }}')">{{ user.username }}</div>
+                {% endfor %}
+            </div>
+            <input type="hidden" name="other_user_id" id="selected_user_id">
+            <div class="div-btn-main">
+                <button type="submit" class="btn-main">Contacter</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

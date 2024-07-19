@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Messagerie</h2>
+    {% if not conversation_data %}
+        <h3>
+            Pas encore de conversations.
+        </h3>
+    {% else %}
+        {% for data in conversation_data %}
+            <a href="{% url 'conversation_detail' data.conversation.id %}">
+                <div class="div-conversation">
+                    <p>
+                        <strong>{{ data.other_participant }}</strong>
+                    </p>
+                    <div>
+                        {{ data.messages.last.body }} <br>
+                        <small>{{ data.messages.last.timestamp }}</small>
+                    </div>
+                </div>
+
+            </a>
+        {% endfor %}
+    {% endif %}
+    
+    <div class="div-btn-main">
+        <a href="{% url 'start_conversation' %}" class="btn-main">Nouvelle conversation</a>
+    </div>
+
+{% endblock %}

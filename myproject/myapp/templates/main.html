@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Bienvenue sur SportsMate</h1>
+    <h2>L'unique plateforme de mise en<br>relation de supporters.</h2>
+
+    <div class="main-clickable-div">
+        <div class="clickable-div" data-url="{% url 'event_list' %}">
+            <div class="text-overlay">
+                <h4>Je cherche un événement</h4>
+            </div>
+            <img src="/myapp/static/images/terrain.jpg" alt="Terrain">
+        </div>
+        <div class="clickable-div" data-url="{% url 'create_event' %}">
+            <div class="text-overlay">
+                <h4>Je propose un événement</h4>
+            </div>
+            <img src="/myapp/static/images/stade.jpg" alt="Stade">
+        </div>
+    </div>
+
+{% endblock %}

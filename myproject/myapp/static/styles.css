@@ -1,0 +1,363 @@
+/* Liste couleur
+Raw umber 8D6B48
+Lion BE986D
+Lion BE986D
+White smoke F2F4F3
+*/
+
+body {
+    font-family: "Lato", sans-serif;
+    background-color: #BE986D;
+}
+
+h1 {
+    margin-top: 70px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #F2F4F3;
+}
+
+a {
+    text-decoration: none;
+}
+
+form {
+    color: #F2F4F3;
+}
+
+.container h2 {
+    text-align: right;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: #E8C9AB;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #8D6B48;
+    font-weight: bold;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #F2F4F3;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.sidenav-registration {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.sidenav-registration a {
+    padding: 8px 0;
+}
+
+.openbtn {
+    position: fixed;
+    top: 10px;
+    height: 20px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #E8C9AB;
+    color: #F2F4F3;
+    padding: 10px 15px;
+    border: none;
+}
+
+.btn-deco {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: #E8C9AB;
+    color: #8D6B48;
+    margin-top: 20px;
+    border: none;
+}
+
+
+/* Sign up */
+.signup-container {
+    color: #F2F4F3;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.signup-container h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.signup-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-container form .btn {
+    padding: 10px;
+    background: #007BFF;
+    color: #F2F4F3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.signup-container form .btn:hover {
+    background: #0056b3;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.alert.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.alert.error {
+    background: #E8C9AB;
+    color: #721c24;
+    border: #721c24 solid;
+}
+
+.main-clickable-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.clickable-div {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px;
+}
+
+.clickable-div img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.5;
+
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    z-index: 1;
+}
+
+.detail-sport {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.img-sport {
+    width: 20%;
+    height: 20%;
+}
+
+.div-btn-main {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.btn-main {
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: #F2F4F3 solid;
+    background-color: #BE986D;
+    color: #F2F4F3;
+}
+
+.event-date-choice-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.event-date-choice-div a {
+    color: #F2F4F3;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.card-event {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-event-left {
+    margin: 10px 5px;
+    background-color: #E8C9AB;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+}
+
+.card-event-left p {
+    margin: 0 !important;
+    padding: 3px;
+    color: #F2F4F3;
+}
+
+.card-event-right {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: #F2F4F3 solid;
+    background-color: #E8C9AB;
+    width: 70%;
+}
+
+.card-event-right p {
+    margin: 8px 0;
+}
+
+.card-event-right-bottom, .card-event-right-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-event-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-event-middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.participants-div {
+    margin: 10px;
+    padding: 10px;
+    background-color: #E8C9AB;
+}
+
+.participants-div .title {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 25px;
+    padding: 10px;
+    margin: 0;
+}
+
+.div-conversation {
+    text-align: center;
+    margin: 10px 0;
+    padding: 8px;
+    background-color: #F2F4F3;
+    border-radius: 5px;
+}
+
+.div-conversation p {
+    text-align: left;
+    margin: 0;
+    font-size: 20px;
+    padding-left: 30px;
+}
+
+.div-conversation-detail {
+    margin-bottom: 25px;
+}
+
+.conversation-my-message {
+    padding: 5px;
+    background-color: #F2F4F3;
+    border: #F2F4F3 1px solid;
+    border-radius: 5px;
+    margin: 8px 0;
+    text-align: right;
+}
+
+.conversation-other-message {
+    padding: 5px;
+    background-color: #E8C9AB;
+    border: #E8C9AB 1px solid;
+    border-radius: 5px;
+    margin: 8px 0;
+    text-align: left;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px; /* Ajustez la largeur selon vos besoins */
+    margin: 0 auto;
+}
+
+form div, form p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+form label {
+    flex-basis: 30%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form input[type="date"] {
+    flex-basis: 60%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+#user-list {
+    display: block;
+}
+
+#user_search {
+    margin: auto;
+}
+
+.user-item {
+    padding: 5px;
+    text-align: center;
+    display: block;
+}
+
+.search-bar {
+    text-align: center;
+}

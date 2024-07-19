@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Mon compte</h1>
+    {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{message}}</div>
+            {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="div-btn-main">
+                <button type="submit" class="btn-main">Mettre à jour</button>
+            </div>
+        </form>
+
+    </div>
+
+
+{% endblock %}

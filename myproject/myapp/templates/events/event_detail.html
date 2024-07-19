@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+
+        <h1>{{ event.name }}</h1>
+            <div class="card-event">
+                <div  class="card-event-left">
+                    <p>
+                        <strong>{{ event.date|date:"d" }}</strong>
+                    </p>
+                    <p>
+                        {{ event.date|date:"M"}}
+                    </p>
+                </div>
+                <div class="card-event-right">
+                    <div class="card-event-right-bottom">
+                        <h3>
+                            <i class="fa-solid fa-location-dot"></i> {{ event.city }}
+                        </h3>
+                        <h3>
+                            {{ event.time|time:'H:i' }}
+                        </h3>
+                    </div>
+
+                    <div class="card-event-right-bottom">
+                        <p>
+                            <i class="fa-solid fa-users"></i> {{ event.available_places }} places restantes
+                        </p>
+                        <p>
+                            {{ event.price }} €
+                        </p>
+                    </div>
+                    <p>
+                        <i class="fa-solid fa-user"></i> {{ event.owner.username }}
+                    </p>
+                </div>
+            </div>
+            
+            {% if join_event  %}
+                <div class="div-btn-main">
+                    <a href="{% url 'join_event' event.id %}" class="btn-main">Réserver</a>
+                </div>
+            {% endif %}
+
+            <div class="participants-div">
+                <p class="title">
+                    Participants
+                </p>
+                {% for participant in participants %}
+                    <p>{{ participant.username }}</p>
+                {% endfor %}
+            </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <h2>Mes événements</h2>
+        <div class="event-date-choice-div">
+            <a href="?filter=upcoming">A venir</a>
+            <a href="?filter=past">Passées</a>
+        </div>
+        <div id="event-list">
+            {% for event in events %}
+                <div class="card-event clickable-div event-name-{{event.id}}" onclick="makeDivsClickable('event-name-{{event.id}}')" data-url="{% url 'event_detail' event.id %}">
+                    <div  class="card-event-left">
+                        <p>
+                            <strong>{{ event.date|date:"d" }}</strong>
+                        </p>
+                        <p>
+                            {{ event.date|date:"M"}}
+                        </p>
+                    </div>
+                    <div class="card-event-right">
+                        <div class="card-event-right-bottom">
+                            <h3>
+                                {{ event.name }}
+                            </h3>
+                            <h3>
+                                {{ event.time|time:'H:i' }}
+                            </h3>
+                        </div>
+                        <p>
+                            <i class="fa-solid fa-location-dot"></i> {{ event.city }}
+                        </p>
+                        <div class="card-event-right-bottom">
+                            <p>
+                                <i class="fa-solid fa-users"></i> {{ event.available_places }} places restantes
+                            </p>
+                            <p>
+                                {{ event.price }} €
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

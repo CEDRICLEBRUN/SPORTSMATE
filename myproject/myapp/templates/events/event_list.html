@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+
+        <h2>Evénements disponibles</h2>
+
+        <div class="messages">
+            {% if messages %}
+
+                {% for message in messages %}
+                    <p class="alert error">
+                        {{ message }}
+                    </p>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="search-title" placeholder="Nom ou sport..." value="{{ title }}" oninput="filterSearchByNameOrSport()">
+            <input type="text" id="search-city" placeholder="Ville..." value="{{ city }}" oninput="filterSearchByCity()">
+        </div>
+        <div id="event-list">
+            {% for event in events %}
+                <div class="card-event clickable-div event-name-{{event.id}}" onclick="makeDivsClickable('event-name-{{event.id}}')"  data-url="{% url 'event_detail' event.id %}">
+                    <div  class="card-event-left">
+                        <p>
+                            <strong>{{ event.date|date:"d" }}</strong>
+                        </p>
+                        <p>
+                            {{ event.date|date:"M"}}
+                        </p>
+                    </div>
+                    <div class="card-event-right">
+                        <div class="card-event-right-bottom">
+                            <h3>
+                                {{ event.name }}
+                            </h3>
+                            <h3>
+                                {{ event.time|time:'H:i'}}
+                            </h3>
+                        </div>
+                        <h4>
+                            <i class="fa-solid fa-location-dot"></i> {{ event.city }}
+                        </h4>
+                        <div class="card-event-right-bottom">
+                            <p>
+                                <i class="fa-solid fa-users"></i> {{ event.available_places }} places restantes
+                            </p>
+                            <p>
+                                {{ event.price }} €
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
