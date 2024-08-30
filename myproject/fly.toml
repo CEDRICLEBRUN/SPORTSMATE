@@ -21,3 +21,7 @@ primary_region = 'cdg'
 
 [build]
   dockerfile = "Dockerfile"
+
+[[statics]]
+  guest_path = "/app/staticfiles"
+  url_prefix = "/static"
