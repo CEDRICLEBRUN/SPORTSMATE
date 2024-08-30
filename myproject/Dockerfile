@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Exposer le port sur lequel l'application va fonctionner
-EXPOSE 8000
+EXPOSE 8080
 
 # Commande pour démarrer l'application
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "myproject.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "myproject.wsgi:application"]
