@@ -119,7 +119,9 @@ DATE_FORMAT = 'd M Y'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+
 STATIC_URL = '/myapp/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [BASE_DIR / "myapp/static"]
 
 # Default primary key field type
