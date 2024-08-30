@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-xm_w15$aztayb-hmo1)fdg*z9pp@55do-gs90t43tko2&l$-53
 DEBUG = True
 
 APP_NAME = os.environ.get("FLY_APP_NAME")
-ALLOWED_HOSTS = [f"{APP_NAME}.fly.dev"]
+ALLOWED_HOSTS = [f"{APP_NAME}.fly.dev", '127.0.0.1']
 
 # Application definition
 
@@ -121,7 +121,7 @@ DATE_FORMAT = 'd M Y'
 
 
 STATIC_URL = '/myapp/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / "myapp/static"]
 
 # Default primary key field type
