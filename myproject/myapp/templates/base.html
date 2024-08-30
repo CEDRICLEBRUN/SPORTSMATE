@@ -25,12 +25,12 @@
         <div id="mySidenav" class="sidenav closebtn" onclick="closeNav()">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href=" {% url 'main' %}"><i class="fa-solid fa-house-chimney"></i> Accueil</a>
-            <a href=" {% url 'event_list' %}"><i class="fa-solid fa-calendar-day"></i> Rechercher</a>
-            <a href=" {% url 'create_event' %}"><i class="fa-regular fa-calendar-plus"></i> Ajouter</a>
-            <a href=" {% url 'my_events' %}"><i class="fa-regular fa-calendar-check"></i> Mes événements</a>
-            <a href=" {% url 'account' %}"><i class="fa-solid fa-gear"></i> Mon compte</a>
-            <a href=" {% url 'conversation_list' %}"><i class="fa-regular fa-message"></i> Messagerie</a>
             {% if user.is_authenticated %}
+                <a href=" {% url 'event_list' %}"><i class="fa-solid fa-calendar-day"></i> Rechercher</a>
+                <a href=" {% url 'create_event' %}"><i class="fa-regular fa-calendar-plus"></i> Ajouter</a>
+                <a href=" {% url 'my_events' %}"><i class="fa-regular fa-calendar-check"></i> Mes événements</a>
+                <a href=" {% url 'account' %}"><i class="fa-solid fa-gear"></i> Mon compte</a>
+                <a href=" {% url 'conversation_list' %}"><i class="fa-regular fa-message"></i> Messagerie</a>
                 <form id="logout-form" method="post" action="{% url 'logout' %}">
                     {% csrf_token %}
                     <button type="submit" class="btn-main">Se déconnecter</button>
