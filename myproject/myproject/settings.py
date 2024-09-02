@@ -27,8 +27,8 @@ SECRET_KEY = 'django-insecure-xm_w15$aztayb-hmo1)fdg*z9pp@55do-gs90t43tko2&l$-53
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-APP_NAME = os.environ.get("FLY_APP_NAME")
-ALLOWED_HOSTS = [f"{APP_NAME}.fly.dev", '127.0.0.1']
+# APP_NAME = os.environ.get("FLY_APP_NAME")
+ALLOWED_HOSTS = ["sportsmate.fly.dev", '127.0.0.1']
 
 # Application definition
 
@@ -51,6 +51,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://sportsmate.fly.dev/']
 
 ROOT_URLCONF = 'myproject.urls'
 
