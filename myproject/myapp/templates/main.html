@@ -1,25 +1,41 @@
 {% extends "base.html" %}
 
-{% load static %}
-
 {% block content %}
 
-    <h1>Bienvenue sur SportsMate</h1>
-    <h2>L'unique plateforme de mise en<br>relation de supporters.</h2>
+    <div class="container">
 
-    <div class="main-clickable-div">
-        <div class="clickable-div" data-url="{% url 'event_list' %}">
-            <div class="text-overlay">
-                <h4>Je cherche un événement</h4>
+        <h1>Bienvenue sur SportsMate !</h1>
+        <h2>L'unique plateforme de mise en<br>relation de supporters.</h2>
+
+        {% if user.is_authenticated %}
+            <div class="main-clickable-div">
+                <div class="clickable-div event-list-div" onclick="makeDivsClickable('event-list-div')" data-url="{% url 'event_list' %}">
+                    <div class="text-overlay">
+                        <h4>Je cherche un événement</h4>
+                    </div>
+                    <img src="/static/images/terrain.jpg" alt="Terrain">
+                </div>
+                <div class="clickable-div new-event-div" onclick="makeDivsClickable('new-event-div')" data-url="{% url 'create_event' %}">
+                    <div class="text-overlay">
+                        <h4>Je propose un événement</h4>
+                    </div>
+                    <img src="/static/images/stade.jpg" alt="Stade">
+                </div>
+                <div class="clickable-div my-events-div" onclick="makeDivsClickable('my-events-div')" data-url="{% url 'my_events' %}">
+                    <div class="text-overlay">
+                        <h4>Je consulte mes événements</h4>
+                    </div>
+                    <img src="/static/images/rugby.jpg" alt="Stade rugby">
+                </div>
             </div>
-            <img src="{% static 'images/terrain.jpg' %}" alt="Terrain">
-        </div>
-        <div class="clickable-div" data-url="{% url 'create_event' %}">
-            <div class="text-overlay">
-                <h4>Je propose un événement</h4>
+        {% else %}
+            <h3>Pour pouvoir accéder aux fonctionnalités, connectez-vous ou inscivez-vous !</h3>
+            <div class="div-btn-main">
+                <a href="{% url 'login' %}" class="btn-main">Se connecter</a>
+                <a href="{% url 'signup' %}" class="btn-main">Créer un compte</a>
             </div>
-            <img src="{% static 'images/stade.jpg' %}" alt="Stade">
-        </div>
+        {% endif %}
+
     </div>
 
 {% endblock %}
