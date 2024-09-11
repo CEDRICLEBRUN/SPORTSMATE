@@ -2,13 +2,15 @@
 
 {% block content %}
 
-    <div class="container">
+    <div class="container start-conversation">
         <h2>Nouvelle conversation</h2>
+
+        <p>Qui voulez-vous contacter ?</p>
         <form method="post">
             {% csrf_token %}
             <div>
                 <label for="user_search" hidden></label>
-                <input type="text" id="user_search" onkeyup="filterUsers()" placeholder="Pseudo">
+                <input type="text" id="user_search" onkeyup="filterUsers()" class="form-control" placeholder="Pseudo">
             </div>
             <div id="user-list">
                 {% for user in users %}
@@ -16,7 +18,7 @@
                 {% endfor %}
             </div>
             <input type="hidden" name="other_user_id" id="selected_user_id">
-            <div class="div-btn-main">
+            <div class="div-btn-main contact-btn">
                 <button type="submit" class="btn-main">Contacter</button>
             </div>
         </form>
