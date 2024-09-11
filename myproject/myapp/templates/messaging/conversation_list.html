@@ -2,30 +2,36 @@
 
 {% block content %}
 
-    <h2>Messagerie</h2>
-    {% if not conversation_data %}
-        <h3>
-            Pas encore de conversations.
-        </h3>
-    {% else %}
-        {% for data in conversation_data %}
-            <a href="{% url 'conversation_detail' data.conversation.id %}">
-                <div class="div-conversation">
-                    <p>
-                        <strong>{{ data.other_participant }}</strong>
-                    </p>
-                    <div>
-                        {{ data.messages.last.body }} <br>
-                        <small>{{ data.messages.last.timestamp }}</small>
-                    </div>
-                </div>
+    <div class="container">
+        <h2>Messagerie</h2>
+        <h2><a href="{% url 'start_conversation' %}" class="btn-a"><i class="fa-regular fa-message"></i></a></h2>
 
-            </a>
-        {% endfor %}
-    {% endif %}
-    
-    <div class="div-btn-main">
-        <a href="{% url 'start_conversation' %}" class="btn-main">Nouvelle conversation</a>
+
+        {% if not conversation_data %}
+            <h3>
+                Pas encore de conversations.
+            </h3>
+        {% else %}
+            {% for data in conversation_data %}
+                <a href="{% url 'conversation_detail' data.conversation.id %}">
+                    <div class="div-conversation">
+                        <div class="div-conversation-other-participant">
+                            <strong>{{ data.other_participant }}</strong>
+                        </div>
+                        <div class="div-conversation-message">
+                            <div>
+                                {{ data.messages.last.body }}
+                            </div>
+                            <div>
+                                <small>{{ data.messages.last.timestamp|date:"d/m/Y H:i" }}</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </a>
+            {% endfor %}
+        {% endif %}
+
     </div>
 
 {% endblock %}
