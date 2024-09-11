@@ -27,6 +27,10 @@ form {
     color: #F2F4F3;
 }
 
+.container {
+    width: 100%;
+}
+
 .container h2 {
     text-align: right;
 }
@@ -148,12 +152,12 @@ form {
 }
 
 .main-clickable-div {
-    display: flex;
-    justify-content: space-between;
+    margin: 0% 10%;
 }
 
 .clickable-div {
     position: relative;
+    width: 100%;
     cursor: pointer;
     display: inline-block;
     margin: 5px;
@@ -173,6 +177,7 @@ form {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+    font-size: 20px;
     text-align: center;
     padding: 10px;
     z-index: 1;
@@ -195,22 +200,39 @@ form {
 }
 
 .btn-main {
-    padding: 5px 15px;
-    border-radius: 5px;
+    min-width: 40%;
+    padding: 15px 15px;
+    border-radius: 5px 0px;
     border: #F2F4F3 solid;
-    background-color: #BE986D;
+    background-color: #F2F4F3;
+    color: #BE986D;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.contact-btn {
+    display: none;
+}
+
+.btn-a {
     color: #F2F4F3;
+    padding-right: 10px;
 }
 
 .event-date-choice-div {
     display: flex;
     justify-content: space-around;
+    padding-bottom: 5px;
 }
 
 .event-date-choice-div a {
     color: #F2F4F3;
     font-size: 20px;
     font-weight: bolder;
+    padding-bottom: 5px;
+    text-decoration-line: underline;
+    text-decoration-color: #F2F4F3;
 }
 
 .card-event {
@@ -278,18 +300,24 @@ form {
 }
 
 .div-conversation {
-    text-align: center;
     margin: 10px 0;
-    padding: 8px;
+    padding: 4px;
+    padding-left: 30px;
+    padding-right: 20px;
     background-color: #F2F4F3;
+    color: #8D6B48;
     border-radius: 5px;
 }
 
-.div-conversation p {
-    text-align: left;
-    margin: 0;
+.div-conversation-other-participant {
     font-size: 20px;
-    padding-left: 30px;
+    padding: 8px 0px;
+}
+
+.div-conversation-message {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 8px;
 }
 
 .div-conversation-detail {
@@ -314,6 +342,13 @@ form {
     text-align: left;
 }
 
+.start-conversation p {
+    text-align: center;
+    color: #F2F4F3;
+    font-size: 20cdpx;
+    font-style: italic;
+}
+
 
 form {
     display: flex;
@@ -335,17 +370,22 @@ form label {
     margin-right: 10px;
 }
 
-form input[type="text"],
-form input[type="password"],
-form input[type="email"],
-form input[type="date"] {
+select {
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    padding: 0.5rem 1rem;
+    flex-basis: 50%; 
+}
+
+.form-control {
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    padding: 0.5rem 1rem;
     flex-basis: 60%;
-    padding: 8px;
-    box-sizing: border-box;
 }
 
 #user-list {
-    display: block;
+    display: none;
 }
 
 #user_search {
@@ -354,8 +394,26 @@ form input[type="date"] {
 
 .user-item {
     padding: 5px;
+    margin-bottom: 25px;
     text-align: center;
     display: block;
+    background-color: #F2F4F3;
+    border: 2px solid #F2F4F3;
+    border-radius: 5px;
+    color: #721c24;
+    position: relative;
+}
+
+.user-item:before {
+content: "";
+position: absolute;
+right: 0%;
+top: 25px;
+width: 0;
+height: 0;
+/* border-left: 10px solid transparent; */
+border-right: 15px solid #F2F4F3;
+border-bottom: 20px solid transparent;
 }
 
 .search-bar {
