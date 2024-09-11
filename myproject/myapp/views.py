@@ -51,11 +51,11 @@ def event_list(request):
     title = request.GET.get('t', '')
     city = request.GET.get('c', '')
     if title:
-        events = Event.objects.filter((Q(name__icontains=title) | Q(sport__icontains=title)), date__gte=timezone.now()).order_by('date')
+        events = Event.objects.filter((Q(name__icontains=title) | Q(sport__icontains=title)) & Q(date__gte=timezone.now()) & ~Q(owner=request.user) & ~Q(participants=request.user)).order_by('date')
     elif city:
-        events = Event.objects.filter(Q(city__icontains=city), date__gte=timezone.now()).order_by('date')
+        events = Event.objects.filter(Q(city__icontains=city) & Q(date__gte=timezone.now()) & ~Q(owner=request.user) & ~Q(participants=request.user)).order_by('date')
     else:
-        events = Event.objects.filter(date__gte=timezone.now()).order_by('date')
+        events = Event.objects.filter(Q(date__gte=timezone.now()) & ~Q(owner=request.user) & ~Q(participants=request.user)).order_by('date')
     return render(request, 'events/event_list.html', {'events': events, 'title': title})
 
 @login_required
@@ -116,6 +116,11 @@ def join_event(request, event_id):
 @login_required
 def conversation_list(request):
     conversations = Conversation.objects.filter(participant1=request.user) | Conversation.objects.filter(participant2=request.user)
+    for conversation in conversations:
+        if len(conversation.messages.all()) == 0:
+            conversation.delete()
+    
+    conversations = Conversation.objects.filter(participant1=request.user) | Conversation.objects.filter(participant2=request.user)
     conversation_data = []
     for conversation in conversations:
         if conversation.participant1 == request.user:
@@ -127,6 +132,8 @@ def conversation_list(request):
             'messages': conversation.messages.all(),
             'other_participant': other_participant,
         })
+
+
     return render(request, 'messaging/conversation_list.html', {'conversation_data': conversation_data})
 
 @login_required
@@ -170,3 +177,4 @@ def start_conversation(request, user_id=None):
     else:
         users = User.objects.exclude(id=request.user.id)
         return render(request, 'messaging/start_conversation.html', {'users': users})
+    
