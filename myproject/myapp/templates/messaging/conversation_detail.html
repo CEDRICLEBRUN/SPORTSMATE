@@ -2,31 +2,35 @@
 
 {% block content %}
 
-    <h2>Conversation</h2>
-    <h2>{{ other_participant.username }}</h2>
-    
-    <div class="div-conversation-detail">
-        {% for message in messages %}
-            {% if message.sender == other_participant %}
-                <div class="conversation-other-message">
-                    {{ message.body }} <br>
-                    <small>{{ message.timestamp }}</small>
-                </div>
-            {% else %}
-                <div class="conversation-my-message">
-                    {{ message.body }} <br>
-                    <small>{{ message.timestamp }}</small>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
+    <div class="container">
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.body }}
-        <div class="div-btn-main">
-            <button type="submit" class="btn-main">Envoyer</button>
+        <h2>Conversation</h2>
+        <h2>{{ other_participant.username }}</h2>
+        
+        <div class="div-conversation-detail">
+            {% for message in messages %}
+                {% if message.sender == other_participant %}
+                    <div class="conversation-other-message">
+                        {{ message.body }} <br>
+                        <small>{{ message.timestamp|date:"d/m/Y H:i" }}</small>
+                    </div>
+                {% else %}
+                    <div class="conversation-my-message">
+                        {{ message.body }} <br>
+                        <small>{{ message.timestamp|date:"d/m/Y H:i" }}</small>
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
-    </form>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.body }}
+            <div class="div-btn-main">
+                <button type="submit" class="btn-main">Envoyer</button>
+            </div>
+        </form>
+
+    </div>
 
 {% endblock %}
